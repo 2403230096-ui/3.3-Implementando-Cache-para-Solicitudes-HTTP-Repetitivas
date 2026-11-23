@@ -35,11 +35,9 @@ Siempre con `GET http://127.0.0.1:8000/api/peliculas/`:
 ## Tiempos (ms)
 | Condición | Prueba 1 | Prueba 2 | Prueba 3 | Prueba 4 | Prueba 5 | Promedio |
 |-----------|----------|----------|----------|----------|----------|----------|
-| Sin caché |          |          |          |          |          |          |
-| Con caché |          |          |          |          |          |          |
+| Sin caché |       6ms|       3ms|       2ms|       2ms|       2ms|       3ms|
+| Con caché |       3ms|       3ms|       2ms|       2ms|       2ms|     2.4ms|
 
-Primera solicitud que llenó el caché (MISS): ___ ms
 
 ## Conclusión
-
-
+Sin caché, el promedio de las cinco solicitudes fue de 3 ms. Con caché, la primera solicitud (que consultó la base de datos y llenó el caché) tardó 12 ms, y las cinco siguientes, que reutilizaron el resultado almacenado, promediaron 2.4 ms. Con pocos registros la diferencia es pequeña (0.6 ms), porque SQLite responde muy rápido, pero el caché funcionó: el encabezado `X-Cache` pasó de `MISS` a `HIT`, la consola mostró `[CACHE MISS]` y luego `[CACHE HIT]`, y tras modificar una película con `PUT` la siguiente solicitud volvió a ser `MISS` con el dato actualizado.
