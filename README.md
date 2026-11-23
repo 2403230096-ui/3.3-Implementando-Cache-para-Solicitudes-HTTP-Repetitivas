@@ -41,5 +41,5 @@ Siempre con `GET http://127.0.0.1:8000/api/peliculas/`:
 Primera solicitud que llenó el caché (MISS): ___ ms
 
 ## Conclusión
-(Escribe aquí la diferencia entre promedios y la evidencia de que el caché funcionó: encabezado `X-Cache`, consola y cambio reflejado tras la actualización.)
+
 
